@@ -4,6 +4,7 @@ import { generateGame, iterateGame } from '../lib/ai.js'
 import { getMyGame, saveMyGame } from '../lib/storage.js'
 import { loadSettings } from '../lib/settings.js'
 import GameFrame from '../components/GameFrame.jsx'
+import KeyWizard from '../components/KeyWizard.jsx'
 
 const EMOJIS = ['🎮', '🐍', '🚀', '🧱', '👾', '🏎️', '⚔️', '🧩', '🏀', '🐦', '💣', '🌟']
 
@@ -11,6 +12,7 @@ export default function Create() {
   const { id } = useParams()
   const existing = id ? getMyGame(id) : null
   const navigate = useNavigate()
+  const [keyVersion, setKeyVersion] = useState(0)
 
   const [title, setTitle] = useState(existing?.title || '')
   const [emoji, setEmoji] = useState(existing?.emoji || '🎮')
@@ -69,8 +71,13 @@ export default function Create() {
 
       {!hasKey && (
         <div className="notice">
-          Aucune clé API configurée : la génération ne fonctionnera pas encore.
-          Ajoutez votre clé gratuite (Gemini ou Groq) dans les <Link to="/reglages">Réglages</Link>.
+          <p style={{ marginTop: 0 }}>
+            Il vous manque juste une clé API gratuite pour générer des jeux (1 minute, sans carte bancaire) :
+          </p>
+          <KeyWizard onDone={() => setKeyVersion(v => v + 1)} />
+          <p className="hint" style={{ marginBottom: 0 }}>
+            Vous préférez Groq ? Configurez-le dans les <Link to="/reglages">Réglages</Link>.
+          </p>
         </div>
       )}
 

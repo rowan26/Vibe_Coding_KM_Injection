@@ -126,3 +126,21 @@ textarea { resize: vertical; min-height: 90px; }
   text-align: center; color: var(--muted); padding: 3rem 1rem;
   border: 2px dashed #2c3358; border-radius: var(--radius);
 }
+
+/* Modales (connexion, assistant clé API) */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(5, 6, 16, 0.75);
+  display: flex; align-items: center; justify-content: center; z-index: 100; padding: 1rem;
+}
+.modal {
+  background: var(--panel); border: 1px solid #2c3358; border-radius: var(--radius);
+  padding: 1.4rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto;
+}
+.modal h3 { margin-top: 0; }
+.steps { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.steps code { background: var(--panel-2); padding: 0.1rem 0.35rem; border-radius: 4px; }
+
+/* Utilisateur connecté */
+.userchip { display: inline-flex; align-items: center; gap: 0.5rem; }
+.avatar { width: 26px; height: 26px; border-radius: 50%; border: 1px solid #2c3358; }
+.username { color: var(--accent-2); font-weight: 600; font-size: 0.9rem; }

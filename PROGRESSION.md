@@ -28,16 +28,26 @@
 - Workflow GitHub Actions : build + déploiement automatique sur GitHub Pages
   à chaque push sur `main`.
 
+### Étape 4 — Comptes OAuth 2.0 et assistant clé API
+- Authentification gratuite via Supabase Auth : connexion **GitHub** ou **Google**
+  (OAuth 2.0, flux PKCE). Bouton "Se connecter" dans l'en-tête, avatar + pseudo affichés.
+- Publication liée au compte : chaque jeu public porte le pseudo et l'`user_id` de son
+  auteur ; seul l'auteur peut le dépublier (politiques RLS côté base).
+- Configuration plateforme centralisée dans `src/config.js` (URL + clé anon Supabase,
+  commitables) — les visiteurs n'ont rien à configurer pour jouer et publier.
+- **Assistant clé Gemini intégré** : popup pas-à-pas dans la plateforme (pages Créer et
+  Réglages) qui ouvre Google AI Studio, puis teste la clé collée avant de l'enregistrer.
+
 ## 🔜 À faire (idées pour les prochaines sessions)
 
-- [ ] Activer GitHub Pages dans les réglages du dépôt (Settings → Pages → GitHub Actions).
-- [ ] Créer le projet Supabase partagé et mettre l'URL/clé anon par défaut dans le code
-      (pour que les visiteurs n'aient rien à configurer pour *jouer*).
-- [ ] Comptes utilisateurs (Supabase Auth, gratuit) : lier chaque jeu à son auteur,
-      permettre de dépublier/mettre à jour ses jeux publics.
+- [ ] Fusionner la branche dans `main` puis activer GitHub Pages
+      (Settings → Pages → Source : GitHub Actions).
+- [ ] Créer le projet Supabase partagé, exécuter le SQL du README, activer les
+      fournisseurs OAuth (GitHub/Google) et remplir `src/config.js`.
 - [ ] Recherche et catégories dans la galerie, votes/étoiles.
 - [ ] Miniatures des jeux (capture du canvas).
 - [ ] Modération basique des publications (liste de signalement).
+- [ ] Mettre à jour un jeu déjà publié (update au lieu de republier).
 
 ## 🗒️ Notes techniques
 
