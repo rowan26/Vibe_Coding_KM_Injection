@@ -219,3 +219,7 @@ __marimo__/
 
 # Node
 node_modules/
+
+# Exception : src/lib contient le code source JS de la plateforme
+!src/lib/
+!src/lib/**
