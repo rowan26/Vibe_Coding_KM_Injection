@@ -40,8 +40,8 @@
 
 ## 🔜 À faire (idées pour les prochaines sessions)
 
-- [ ] Fusionner la branche dans `main` puis activer GitHub Pages
-      (Settings → Pages → Source : GitHub Actions).
+- [x] Fusionner la branche dans `main` puis activer GitHub Pages
+      (dépôt passé en public le 08/07/2026, activation automatique par le workflow).
 - [ ] Créer le projet Supabase partagé, exécuter le SQL du README, activer les
       fournisseurs OAuth (GitHub/Google) et remplir `src/config.js`.
 - [ ] Recherche et catégories dans la galerie, votes/étoiles.
