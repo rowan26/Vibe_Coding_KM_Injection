@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { loadSettings, saveSettings } from '../lib/settings.js'
+import KeyWizard from '../components/KeyWizard.jsx'
 
 export default function Settings() {
   const [s, setS] = useState(loadSettings)
@@ -29,10 +30,14 @@ export default function Settings() {
 
         {s.provider === 'gemini' ? (
           <>
+            <div style={{ margin: '0.8rem 0' }}>
+              <KeyWizard onDone={() => { setS(loadSettings()); setSaved(false) }} />
+            </div>
             <label htmlFor="geminiKey">Clé API Gemini</label>
             <input id="geminiKey" type="password" value={s.geminiKey} onChange={set('geminiKey')} placeholder="AIza..." />
             <p className="hint">
-              Obtenez une clé gratuite en 1 minute sur{' '}
+              L'assistant ci-dessus la génère et la teste pour vous ; vous pouvez aussi la coller
+              manuellement depuis{' '}
               <a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">aistudio.google.com/apikey</a>
               {' '}(compte Google requis, aucune carte bancaire).
             </p>
@@ -55,11 +60,12 @@ export default function Settings() {
       </div>
 
       <div className="panel">
-        <h3 style={{ marginTop: 0 }}>🌍 Galerie communautaire (optionnel)</h3>
+        <h3 style={{ marginTop: 0 }}>🌍 Galerie communautaire (avancé)</h3>
         <p className="hint">
-          Pour partager les jeux entre tous les utilisateurs, la plateforme utilise un projet Supabase
-          (offre gratuite). Le SQL de création de la table est dans le README du dépôt.
-          Sans cela, la galerie affiche les jeux d'exemple et vos jeux restent privés dans ce navigateur.
+          Normalement, le propriétaire du site configure Supabase une fois pour tous dans{' '}
+          <code>src/config.js</code> (galerie partagée + connexion OAuth GitHub/Google — voir README).
+          Les champs ci-dessous servent uniquement à brancher <em>votre propre</em> projet Supabase,
+          par exemple pour tester en local.
         </p>
         <label htmlFor="supabaseUrl">URL du projet Supabase</label>
         <input id="supabaseUrl" value={s.supabaseUrl} onChange={set('supabaseUrl')} placeholder="https://xxxx.supabase.co" />

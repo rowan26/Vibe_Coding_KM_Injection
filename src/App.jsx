@@ -4,9 +4,12 @@ import MyGames from './pages/MyGames.jsx'
 import Create from './pages/Create.jsx'
 import Play from './pages/Play.jsx'
 import Settings from './pages/Settings.jsx'
+import AuthButton from './components/AuthButton.jsx'
+import { AuthProvider } from './lib/auth.jsx'
 
 export default function App() {
   return (
+    <AuthProvider>
     <div className="app">
       <header className="topbar">
         <NavLink to="/" className="logo">🕹️ Vibe Arcade</NavLink>
@@ -15,6 +18,7 @@ export default function App() {
           <NavLink to="/mes-jeux">Mes jeux</NavLink>
           <NavLink to="/creer" className="cta">+ Créer un jeu</NavLink>
           <NavLink to="/reglages">⚙️ Réglages</NavLink>
+          <AuthButton />
         </nav>
       </header>
       <main>
@@ -31,5 +35,6 @@ export default function App() {
         Plateforme 100 % gratuite — les jeux tournent dans votre navigateur, comme les jeux Flash d'antan.
       </footer>
     </div>
+    </AuthProvider>
   )
 }
