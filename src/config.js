@@ -10,6 +10,6 @@
 // chaque visiteur peut brancher son propre Supabase dans les Réglages.
 
 export const PLATFORM_SUPABASE = {
-  url: '',      // ex : 'https://abcdefgh.supabase.co'
-  anonKey: '',  // ex : 'eyJhbGciOiJIUzI1NiIs...'
+  url: 'https://laygfqgjrzuihqawuyda.supabase.co',      // ex : 'https://abcdefgh.supabase.co'
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxheWdmcWdqcnp1aWhxYXd1eWRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0OTQ5MzQsImV4cCI6MjA5OTA3MDkzNH0._WVW_PvuLN36Q1f87A2rJbEAkKueNNmjZTo6Mr4Cgt0'
 }
