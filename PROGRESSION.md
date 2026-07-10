@@ -38,6 +38,18 @@
 - **Assistant clé Gemini intégré** : popup pas-à-pas dans la plateforme (pages Créer et
   Réglages) qui ouvre Google AI Studio, puis teste la clé collée avant de l'enregistrer.
 
+### Étape 5 — Refonte « plateforme de génération » (type Higgsfield)
+- Refonte visuelle cinématique : thème sombre, dégradés, effets de halo, cartes
+  glassmorphism, barre de prompt héroïque centrale.
+- Structuration en **deux environnements** explicites :
+  - **🧪 Studio** (`/studio`) : environnement de développement personnel/privé
+    (ex-« Mes jeux »), avec carte de création intégrée.
+  - **🌍 Monde** (`/`) : environnement international/public (ex-« Galerie »), avec
+    hero + barre de prompt + suggestions qui amorcent la création.
+- La barre de prompt du Monde route vers l'atelier avec préremplissage (`?prompt=`).
+- Anciennes routes redirigées (`/mes-jeux` → `/studio`), pages Gallery/MyGames
+  remplacées par Explore/Studio.
+
 ## 🔜 À faire (idées pour les prochaines sessions)
 
 - [x] Fusionner la branche dans `main` puis activer GitHub Pages

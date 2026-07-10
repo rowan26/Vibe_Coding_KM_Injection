@@ -6,15 +6,21 @@ jouez immédiatement dans le navigateur — puis vous partagez votre création a
 
 ## ✨ Fonctionnalités
 
-- **Création par prompt** : décrivez un jeu ("un snake néon", "un shoot'em up spatial"…),
-  l'IA génère un jeu HTML complet et jouable.
+Inspirée des plateformes de génération par IA (type Higgsfield), avec **deux environnements** :
+
+- **🧪 Studio (personnel)** : ton environnement de développement privé. Tes créations y sont
+  sauvegardées dans ton navigateur, visibles de toi seul — tu itères tranquillement avant de partager.
+- **🌍 Monde (international)** : le flux public partagé. Tu décides quels jeux y publier, à ton nom.
+
+Et sous le capot :
+
+- **Création par prompt** : une barre de prompt centrale — décris un jeu ("un snake néon",
+  "un shoot'em up spatial"…), l'IA génère un jeu HTML complet et jouable.
 - **Itération** : "rends le personnage plus rapide", "ajoute des ennemis" — le jeu est
   mis à jour, pas besoin de repartir de zéro.
-- **Jeux privés** : vos créations sont sauvegardées dans votre navigateur, visibles par vous seul.
 - **Comptes OAuth 2.0** : connexion gratuite via GitHub ou Google (Supabase Auth) —
-  nécessaire uniquement pour publier ; jouer et créer restent possibles sans compte.
-- **Publication** : quand vous êtes prêt, publiez votre jeu dans la galerie publique,
-  à votre nom. Vous seul pouvez le dépublier.
+  nécessaire uniquement pour partager avec le Monde ; jouer et créer restent possibles sans compte.
+- **Partage réversible** : tu publies au Monde quand tu veux, et toi seul peux dépublier.
 - **Assistant clé API intégré** : un popup guide chaque créateur pour générer sa clé
   Gemini gratuite sans quitter la plateforme, la teste et l'enregistre.
 - **Lecture sécurisée** : chaque jeu tourne dans une iframe *sandbox*, isolée du site.
