@@ -14,21 +14,24 @@ export default function Play() {
     if (source === 'local') {
       const g = getMyGame(id)
       if (g) setGame(g)
-      else setError('Jeu introuvable dans votre bibliothèque.')
+      else setError('Jeu introuvable dans ton Studio.')
     } else {
       getCommunityGame(id)
-        .then(g => (g ? setGame(g) : setError('Jeu introuvable dans la galerie.')))
+        .then(g => (g ? setGame(g) : setError('Jeu introuvable dans le Monde.')))
         .catch(e => setError(e.message))
     }
   }, [source, id])
 
-  if (error) return <div><div className="error">{error}</div><Link className="btn" to="/">← Retour à la galerie</Link></div>
+  if (error) return <div><div className="error">{error}</div><Link className="btn" to="/">← Retour au Monde</Link></div>
   if (!game) return <p className="subtitle">Chargement du jeu…</p>
 
   return (
     <div>
-      <h1>{game.emoji || '🎮'} {game.title}</h1>
-      <p className="subtitle">{game.author ? `par ${game.author}` : 'création privée'}</p>
+      <Link className="btn" to={source === 'local' ? '/studio' : '/'} style={{ marginBottom: '1rem' }}>
+        ← {source === 'local' ? 'Studio' : 'Monde'}
+      </Link>
+      <h1 style={{ marginTop: '0.8rem' }}>{game.emoji || '🎮'} {game.title}</h1>
+      <p className="subtitle">{game.author ? `par ${game.author}` : 'création privée · Studio'}</p>
       <GameFrame html={game.html} title={game.title} />
     </div>
   )

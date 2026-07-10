@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { generateGame, iterateGame } from '../lib/ai.js'
 import { getMyGame, saveMyGame } from '../lib/storage.js'
 import { loadSettings } from '../lib/settings.js'
@@ -12,11 +12,13 @@ export default function Create() {
   const { id } = useParams()
   const existing = id ? getMyGame(id) : null
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [keyVersion, setKeyVersion] = useState(0)
 
   const [title, setTitle] = useState(existing?.title || '')
   const [emoji, setEmoji] = useState(existing?.emoji || '🎮')
-  const [prompt, setPrompt] = useState(existing?.prompt || '')
+  // Prérempli depuis la barre de prompt du Monde (?prompt=...)
+  const [prompt, setPrompt] = useState(existing?.prompt || searchParams.get('prompt') || '')
   const [instruction, setInstruction] = useState('')
   const [html, setHtml] = useState(existing?.html || '')
   const [busy, setBusy] = useState(false)
@@ -64,9 +66,9 @@ export default function Create() {
 
   return (
     <div>
-      <h1>{existing ? `Modifier « ${existing.title} »` : 'Créer un jeu par prompt'}</h1>
+      <h1 className="gradient">{existing ? `Modifier « ${existing.title} »` : '✨ Atelier de création'}</h1>
       <p className="subtitle">
-        Décrivez le jeu de vos rêves, l'IA écrit le code. Itérez jusqu'à ce qu'il soit parfait, puis sauvegardez.
+        Décris le jeu de tes rêves, l'IA écrit le code. Itère jusqu'à ce qu'il soit parfait, sauvegarde-le dans ton Studio, puis partage-le avec le Monde.
       </p>
 
       {!hasKey && (
@@ -132,7 +134,7 @@ export default function Create() {
           )}
 
           {error && <div className="error">{error}</div>}
-          {saved && <div className="notice">Jeu sauvegardé dans <Link to="/mes-jeux">Mes jeux</Link> (privé). Publiez-le depuis là quand vous voulez.</div>}
+          {saved && <div className="notice">Jeu sauvegardé dans ton <Link to="/studio">Studio</Link> (privé). Partage-le avec le Monde depuis là quand tu veux.</div>}
         </div>
 
         <div>
